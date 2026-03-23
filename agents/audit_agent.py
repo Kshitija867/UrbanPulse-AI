@@ -1,10 +1,19 @@
+from utils.llm import ask_llm
+
 def audit_agent(context, prediction, verification, impact, decision):
-    return {
-        "log": f"""
-Rain: {context['precipitation']}
-Probability: {prediction['rain_probability']}%
-Verified: {verification['verified']}
-VaR: ₹{impact['VaR']}
-Action: {decision['action']}
-"""
-    }
+    prompt = f"""
+    Create a professional decision memo:
+
+    Rainfall: {context['precipitation']}
+    Probability: {prediction['rain_probability']}%
+    Verified: {verification['verified']}
+    Vendors: {impact['vendors']}
+    VaR: ₹{impact['VaR']}
+    Action: {decision['action']}
+
+    Explain WHY this action was taken.
+    """
+
+    memo = ask_llm(prompt)
+
+    return {"log": memo}

@@ -5,8 +5,8 @@ from agents.impact_agent import impact_agent
 from agents.decision_agent import decision_agent
 from agents.audit_agent import audit_agent
 
-def run_pipeline(location):
-    context = ingestion_agent(location)
+def run_pipeline(location, simulated_rain=None):
+    context = ingestion_agent(location, simulated_rain)
     prediction = prediction_agent(context)
     verification = verification_agent(context, prediction)
 
