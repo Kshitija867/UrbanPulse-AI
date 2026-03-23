@@ -1,12 +1,18 @@
 from utils.config import client
 
 def ask_llm(prompt):
-    response = client.chat.completions.create(
-        model="llama3-70b-8192",
-        messages=[
-            {"role": "system", "content": "You are an expert AI decision-making agent."},
-            {"role": "user", "content": prompt}
-        ]
-    )
+    try:
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "You are an expert AI decision-making agent."},
+                {"role": "user", "content": prompt}
+            ]
+        )
 
-    return response.choices[0].message.content
+        return response.choices[0].message.content
+
+    except Exception as e:
+        return "LLM unavailable. Using fallback logic."
+    
+
