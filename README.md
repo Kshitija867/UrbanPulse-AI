@@ -22,9 +22,9 @@ Urban ecosystems—especially **street vendors and micro-economies**—are highl
 
 Current systems:
 
-* Lack **real-time response**
-* Are **manual and slow**
-* Do not provide **explainable decisions**
+- Lack **real-time response**
+- Are **manual and slow**
+- Do not provide **explainable decisions**
 
 ---
 
@@ -38,78 +38,30 @@ UrbanPulse AI introduces a **fully autonomous decision pipeline** powered by AI 
 
 ## System Architecture
 
-The system follows a modular multi-agent pipeline that enables real-time, explainable decision-making for climate risk scenarios.
+The system follows a modular multi-agent pipeline designed to enable real-time, explainable decision-making for climate risk scenarios. Each component in the pipeline performs a specific role, ensuring a structured flow from data ingestion to final action.
 
-+------------------------------+
-|        USER INTERFACE        |
-|   (Streamlit Dashboard)     |
-|  - Select City              |
-|  - Simulate Rainfall        |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|       INGESTION LAYER        |
-|  - Open-Meteo API (Ready)    |
-|  - Simulation Input          |
-|  - Coordinates Mapping       |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     PREDICTION AGENT         |
-|  - LLM / Logic-based Model   |
-|  - Outputs Risk Probability  |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     VERIFICATION AGENT       |
-|  - Validates Event           |
-|  - (Optional: Geo-filtering) |
-|  - Prevents False Triggers   |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     IMPACT AGENT             |
-|  - Uses Context DB           |
-|  - Vendors × Avg Loss        |
-|  - Computes VaR              |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     DECISION ENGINE          |
-|  - Rule-based Logic          |
-|  - ALERT / PAYOUT / NO-ACTION|
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     AUDIT AGENT (XAI)        |
-|  - Generates Decision Memo   |
-|  - Explains WHY action taken |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|     AUDIT LOGGER             |
-|  - Saves logs to file        |
-|  - Ensures traceability      |
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|      OUTPUT DASHBOARD        |
-|  - VaR                       |
-|  - Risk Level                |
-|  - Action Taken              |
-|  - AI Insight + Memo         |
-|  - Map Visualization         |
-+------------------------------+
+The pipeline consists of the following stages:
 
->  Each agent operates independently, making the system scalable, testable, and production-ready.
+* **User Interface (Streamlit Dashboard):** Allows users to select location and simulate rainfall scenarios for analysis.
+
+* **Ingestion Layer:** Collects environmental inputs such as rainfall data (via API or simulation) and maps them to geographic coordinates.
+
+* **Prediction Agent:** Estimates the probability of disruption using LLM-based or rule-based logic.
+
+* **Verification Agent:** Validates whether the detected event is significant and filters out false triggers.
+
+* **Impact Agent:** Calculates financial risk using Value-at-Risk (VaR), based on the number of affected vendors and average loss per vendor.
+
+* **Decision Engine:** Applies rule-based logic to determine the appropriate action: No Action, Alert, or Payout.
+
+* **Audit Agent (Explainable AI):** Generates a decision memo explaining the reasoning behind the selected action.
+
+* **Audit Logger:** Stores decision logs to ensure traceability and accountability.
+
+* **Output Dashboard:** Displays key results including VaR, risk level, action taken, AI-generated insights, and geospatial visualization.
+
+
+> Each agent operates independently, making the system scalable, testable, and production-ready.
 
 ## Dual-Mode Intelligence
 
@@ -126,13 +78,13 @@ UrbanPulse supports:
 
 ## Key Features
 
- **Real-time AI decision pipeline**
- **LLM-powered reasoning**
- **Value-at-Risk (VaR) calculation**
- **Geospatial visualization (Streamlit map)**
- **Audit logging (persistent logs)**
- **Explainable AI (Decision Memo)**
- **Simulation for stress testing**
+**Real-time AI decision pipeline**
+**LLM-powered reasoning**
+**Value-at-Risk (VaR) calculation**
+**Geospatial visualization (Streamlit map)**
+**Audit logging (persistent logs)**
+**Explainable AI (Decision Memo)**
+**Simulation for stress testing**
 
 ---
 
@@ -174,18 +126,17 @@ UrbanPulse AI/
 
 ---
 
-##  How It Works
+## How It Works
 
 1. User selects **city + rainfall simulation**
 2. Pipeline executes:
+   - Predict → Verify → Impact → Decision
 
-   * Predict → Verify → Impact → Decision
 3. System outputs:
-
-   *  Value at Risk
-   *  Risk Level
-   *  Action Taken
-   *  Decision Memo
+   - Value at Risk
+   - Risk Level
+   - Action Taken
+   - Decision Memo
 
 ---
 
@@ -205,57 +156,52 @@ python -m streamlit run ui/app.py
 
 ---
 
-##  Example Output
+## Example Output
 
-* **VaR:** ₹540,000
-* **Action:** PAYOUT
-* **Risk Level:** High
-* **Audit:** AI-generated decision memo explaining the action
-
----
-
-##  Why This Stands Out
-
-* Moves beyond dashboards → **automated decision systems**
-* Combines:
-
-  * AI reasoning
-  * Financial modeling
-  * Real-world simulation
-* Designed like an **enterprise risk engine**
+- **VaR:** ₹540,000
+- **Action:** PAYOUT
+- **Risk Level:** High
+- **Audit:** AI-generated decision memo explaining the action
 
 ---
 
-##  Future Enhancements
+## Why This Stands Out
 
-*  Live API integration (Open-Meteo)
-*  Hyper-local geofencing
-*  Advanced ML risk models
-*  Ward-level vendor mapping
-*  Historical risk analytics dashboard
+- Moves beyond dashboards → **automated decision systems**
+- Combines:
+  - AI reasoning
+  - Financial modeling
+  - Real-world simulation
 
----
-
-##  Use Cases
-
-* Government disaster response systems
-* Insurance automation platforms
-* Smart city infrastructure
-* Climate risk monitoring tools
+- Designed like an **enterprise risk engine**
 
 ---
 
-##  Author
+## Future Enhancements
+
+- Live API integration (Open-Meteo)
+- Hyper-local geofencing
+- Advanced ML risk models
+- Ward-level vendor mapping
+- Historical risk analytics dashboard
+
+---
+
+## Use Cases
+
+- Government disaster response systems
+- Insurance automation platforms
+- Smart city infrastructure
+- Climate risk monitoring tools
+
+---
+
+## Author
 
 Built as part of a hackathon project focused on **AI for real-world impact**.
 
 ---
 
-##  Final Thought
+## Final Thought
 
 > “UrbanPulse AI doesn’t just predict risk — it acts on it.”
-
-
-
-
-
