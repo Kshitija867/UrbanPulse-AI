@@ -38,41 +38,78 @@ UrbanPulse AI introduces a **fully autonomous decision pipeline** powered by AI 
 
 ##  System Architecture
 
-###  Multi-Agent Pipeline
+The system follows a modular multi-agent pipeline that enables real-time, explainable decision-making for climate risk scenarios.
 
-1. **Ingestion Agent**
+┌──────────────────────────────┐
+│        USER INTERFACE        │
+│  (Streamlit Dashboard)       │
+│  - Select City               │
+│  - Simulate Rainfall         │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│       INGESTION LAYER        │
+│  - Open-Meteo API (Ready)    │
+│  - Simulation Input          │
+│  - Coordinates Mapping       │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     PREDICTION AGENT         │
+│  - LLM / Logic-based Model   │
+│  - Outputs Risk Probability  │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     VERIFICATION AGENT       │
+│  - Validates Event           │
+│  - (Optional: Geo-filtering) │
+│  - Prevents False Triggers   │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     IMPACT AGENT             │
+│  - Uses Context DB           │
+│  - Vendors × Avg Loss        │
+│  - Computes VaR              │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     DECISION ENGINE          │
+│  - Rule-based Logic          │
+│  - ALERT / PAYOUT / NO-ACTION│
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     AUDIT AGENT (XAI)        │
+│  - Generates Decision Memo   │
+│  - Explains WHY action taken │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     AUDIT LOGGER             │
+│  - Saves logs to file        │
+│  - Ensures traceability      │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      OUTPUT DASHBOARD        │
+│  - VaR                       │
+│  - Risk Level                │
+│  - Action Taken              │
+│  - AI Insight + Memo         │
+│  - Map Visualization         │
+└──────────────────────────────┘
 
-   * Fetches real-time weather data (Open-Meteo integration ready)
-   * Supports simulation for testing scenarios
-
-2. **Prediction Agent**
-
-   * Estimates probability of disruption using LLM / fallback logic
-
-3. **Verification Agent**
-
-   * Validates whether the event is significant
-
-4. **Impact Agent**
-
-   * Calculates **Value-at-Risk (VaR)** using:
-
-     * Vendor count
-     * Average loss
-
-5. **Decision Agent**
-
-   * Determines action:
-
-     * `NO ACTION`
-     * `ALERT`
-     * `PAYOUT`
-
-6. **Audit Agent**
-
-   * Generates **Explainable AI decision memo**
-
----
+>  Each agent operates independently, making the system scalable, testable, and production-ready.
 
 ## Dual-Mode Intelligence
 
