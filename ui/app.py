@@ -10,7 +10,7 @@ from core.orchestrator import run_pipeline
 
 st.set_page_config(page_title="UrbanPulse AI", layout="wide")
 
-st.title("UrbanPulse AI Command Center")
+st.title("UrbanPulse AI - Autonomous Climate Risk Resolution System")
 
 location = st.selectbox("Select Location", ["Pune", "Mumbai", "Delhi"])
 
@@ -22,15 +22,15 @@ coords = {
 }
 
 vendor_data = pd.DataFrame([
-    {"lat": 18.516, "lon": 73.856},   # Pune - Laxmi Road
-    {"lat": 18.5204, "lon": 73.8410}, # Pune - FC Road
-    {"lat": 18.5679, "lon": 73.9143}, # Pune - Viman Nagar
+    {"lat": 18.516, "lon": 73.856},   # Pune
+    {"lat": 18.5204, "lon": 73.8410},
+    {"lat": 18.5679, "lon": 73.9143},
 
-    {"lat": 19.0176, "lon": 72.8562}, # Mumbai - Dadar
-    {"lat": 19.1136, "lon": 72.8697}, # Mumbai - Andheri
+    {"lat": 19.0176, "lon": 72.8562}, # Mumbai
+    {"lat": 19.1136, "lon": 72.8697},
 
-    {"lat": 28.6519, "lon": 77.1909}, # Delhi - Karol Bagh
-    {"lat": 28.6562, "lon": 77.2300}  # Delhi - Chandni Chowk
+    {"lat": 28.6519, "lon": 77.1909}, # Delhi
+    {"lat": 28.6562, "lon": 77.2300}
 ])
 
 # Selected location point
@@ -62,19 +62,19 @@ if st.button("Run AI Analysis"):
 
     with status:
         st.write("Ingestion Agent: Fetching weather data...")
-        time.sleep(1)
+        time.sleep(0.5)
 
         st.write("Prediction Agent: Estimating disruption probability...")
-        time.sleep(1)
+        time.sleep(0.5)
 
         st.write("Verification Agent: Validating event...")
-        time.sleep(1)
+        time.sleep(0.5)
 
         st.write("Impact Agent: Calculating financial risk...")
-        time.sleep(1)
+        time.sleep(0.5)
 
         st.write("Decision Agent: Taking action...")
-        time.sleep(1)
+        time.sleep(0.5)
 
         # ---- RUN PIPELINE ----
         st.session_state.result = run_pipeline(
@@ -83,7 +83,7 @@ if st.button("Run AI Analysis"):
         )
 
         st.write("Audit Agent: Generating decision memo...")
-        time.sleep(1)
+        time.sleep(0.5)
 
     status.update(label="Analysis Complete!", state="complete")
 
@@ -119,7 +119,7 @@ if st.session_state.result:
 
         st.divider()
 
-        # ---- ADDED: MARKET CONTEXT ----
+        # Market Context
         st.subheader("Selected Market Context")
         st.write(f"Vendors: {result['impact']['vendors']}")
         st.write(f"Avg Loss per Vendor: ₹{result['impact']['avg_loss']}")
@@ -132,7 +132,7 @@ if st.session_state.result:
 
         st.divider()
 
-        # Decision Memo
+        # Audit Memo
         st.subheader("Decision Memo (Explainable AI)")
         st.code(result["audit"]["log"], language="markdown")
 
