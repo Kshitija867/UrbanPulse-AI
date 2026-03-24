@@ -1,0 +1,23 @@
+[
+  {
+    "city": "Pune",
+    "lat": 18.516,
+    "lon": 73.856,
+    "vendors": 1200,
+    "avg_loss": 800
+  },
+  {
+    "city": "Mumbai",
+    "lat": 19.076,
+    "lon": 72.877,
+    "vendors": 2000,
+    "avg_loss": 1000
+  },
+  {
+    "city": "Delhi",
+    "lat": 28.6139,
+    "lon": 77.2090,
+    "vendors": 1800,
+    "avg_loss": 900
+  }
+]

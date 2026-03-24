@@ -1,8 +1,7 @@
-# LLM reasoning
 from utils.llm import ask_llm
 
 def prediction_agent(context):
-    rain = context["precipitation"]
+    rain = context.get("simulated_rain", 0)
 
     prompt = f"""
     Current rainfall is {rain} mm/hr.

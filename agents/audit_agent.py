@@ -4,7 +4,7 @@ def audit_agent(context, prediction, verification, impact, decision):
     prompt = f"""
     Create a professional decision memo:
 
-    Rainfall: {context['precipitation']}
+    Rainfall: {context['simulated_rain']}
     Probability: {prediction['rain_probability']}%
     Verified: {verification['verified']}
     Vendors: {impact['vendors']}
