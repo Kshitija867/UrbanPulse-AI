@@ -36,78 +36,78 @@ UrbanPulse AI introduces a **fully autonomous decision pipeline** powered by AI 
 
 ---
 
-##  System Architecture
+## System Architecture
 
 The system follows a modular multi-agent pipeline that enables real-time, explainable decision-making for climate risk scenarios.
 
-┌──────────────────────────────┐
-│        USER INTERFACE        │
-│  (Streamlit Dashboard)       │
-│  - Select City               │
-│  - Simulate Rainfall         │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│       INGESTION LAYER        │
-│  - Open-Meteo API (Ready)    │
-│  - Simulation Input          │
-│  - Coordinates Mapping       │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     PREDICTION AGENT         │
-│  - LLM / Logic-based Model   │
-│  - Outputs Risk Probability  │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     VERIFICATION AGENT       │
-│  - Validates Event           │
-│  - (Optional: Geo-filtering) │
-│  - Prevents False Triggers   │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     IMPACT AGENT             │
-│  - Uses Context DB           │
-│  - Vendors × Avg Loss        │
-│  - Computes VaR              │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     DECISION ENGINE          │
-│  - Rule-based Logic          │
-│  - ALERT / PAYOUT / NO-ACTION│
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     AUDIT AGENT (XAI)        │
-│  - Generates Decision Memo   │
-│  - Explains WHY action taken │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     AUDIT LOGGER             │
-│  - Saves logs to file        │
-│  - Ensures traceability      │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│      OUTPUT DASHBOARD        │
-│  - VaR                       │
-│  - Risk Level                │
-│  - Action Taken              │
-│  - AI Insight + Memo         │
-│  - Map Visualization         │
-└──────────────────────────────┘
++------------------------------+
+|        USER INTERFACE        |
+|   (Streamlit Dashboard)     |
+|  - Select City              |
+|  - Simulate Rainfall        |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|       INGESTION LAYER        |
+|  - Open-Meteo API (Ready)    |
+|  - Simulation Input          |
+|  - Coordinates Mapping       |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     PREDICTION AGENT         |
+|  - LLM / Logic-based Model   |
+|  - Outputs Risk Probability  |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     VERIFICATION AGENT       |
+|  - Validates Event           |
+|  - (Optional: Geo-filtering) |
+|  - Prevents False Triggers   |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     IMPACT AGENT             |
+|  - Uses Context DB           |
+|  - Vendors × Avg Loss        |
+|  - Computes VaR              |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     DECISION ENGINE          |
+|  - Rule-based Logic          |
+|  - ALERT / PAYOUT / NO-ACTION|
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     AUDIT AGENT (XAI)        |
+|  - Generates Decision Memo   |
+|  - Explains WHY action taken |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|     AUDIT LOGGER             |
+|  - Saves logs to file        |
+|  - Ensures traceability      |
++--------------+---------------+
+               |
+               v
++------------------------------+
+|      OUTPUT DASHBOARD        |
+|  - VaR                       |
+|  - Risk Level                |
+|  - Action Taken              |
+|  - AI Insight + Memo         |
+|  - Map Visualization         |
++------------------------------+
 
 >  Each agent operates independently, making the system scalable, testable, and production-ready.
 

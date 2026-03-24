@@ -85,7 +85,7 @@ if st.button("Run AI Analysis"):
         st.write("Audit Agent: Generating decision memo...")
         time.sleep(0.5)
 
-    status.update(label="Analysis Complete!", state="complete")
+    status.update(label="Rainfall based Analysis Complete!", state="complete")
 
 
 # ---- DISPLAY RESULT ----
